@@ -1,4 +1,4 @@
-axios.defaults.baseURL = 'http://test.codeedu.com.cn/wangyiyun';
+axios.defaults.baseURL = 'http://lycloudmusicphp.natapp1.cc/';
 var srh_songs = [];
 var Hot_comments = [];
 var Comments_Like_counts = [];
