@@ -1,0 +1,1510 @@
+*{
+  text-decoration: none;
+}
+html,body {
+    height: 100%;
+  }
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  background-color: #16151a;
+  }
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+button {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    /*
+      transparent被用来作为任何color的一个参数值，用于表示透明颜色
+      在2个元素堆叠时，可设置上层元素背景透明，显示下层元素
+    */
+    transition: 0.5s ease;/* ease 为transition-timing-function属性用来描述属性变化的中间值如何计算，初始值为ease*/
+    transition-property: color, background-color, border-color, box-shadow;
+    /*transition-property 指定应用过渡属性的名称*/
+    cursor: pointer;
+    /* cursor 设置光标类型，鼠标悬停在元素上时显示相应样式
+        pointer 通常为手
+    */
+  }
+button:focus {
+    outline: none;
+  }
+a {
+    transition: 0.5s ease;
+    transition-property: color, background-color, border-color, box-shadow;
+  }
+a:hover,a:active,a:focus {
+  outline: none;
+  text-decoration: none;/*文本修饰*/
+}
+input,textarea,select {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  /*属性 border-radius 允许设置元素的外边框圆角*/
+  transition: 0.5s ease;
+  transition-property: color, background-color, border-color, box-shadow;
+}
+input:focus,textarea:focus,select:focus {
+  outline: none;
+}
+select::-ms-expand {
+    display: none;
+    /*去掉select下拉箭头按钮*/
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/*
+::-webkit-scrollbar 滚动条整体部分
+::-webkit-scrollbar-thumb  滚动条里面的小方块，能向上向下移动（或往左往右移动，取决于是垂直滚动条还是水平滚动条）
+::-webkit-scrollbar-track  滚动条的轨道（里面装有Thumb）
+::-webkit-scrollbar-button 滚动条的轨道的两端按钮，允许通过点击微调小方块的位置。
+::-webkit-scrollbar-track-piece 内层轨道，滚动条中间部分（除去）
+::-webkit-scrollbar-corner 边角，即两个滚动条的交汇处
+::-webkit-resizer 两个滚动条的交汇处上用于通过拖动调整元素大小的小控件`
+*/
+body::-webkit-scrollbar {/*自定义滚动条样式*/
+    width: 16px;
+}
+body::-webkit-scrollbar-track {
+    background: #222227;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    outline: 1px solid #222227;
+}
+
+/*==============================
+  header
+==============================*/
+.header {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding-left: 280px;
+  width: auto;
+  /*width: auto
+    子元素（包括content+padding+border+margin）撑满整个父元素的content区域。
+    子元素有margin、border、padding时，会减去子元素content区域相对应的width值
+    父元素的content = 子元素（content + padding + border + margin )
+  width: 100%
+    强制将子元素的content区域 撑满 父元素的content区域
+    子元素有margin、border、padding时，不改变子元素content区域的width，而是溢出父盒子，保持原有值
+    父元素的content = 子元素的content
+  */
+  height: 69px;
+  background-color: #16151a;
+  border-bottom: 1px solid #222227;
+  z-index: 101;
+  /*z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
+    元素可拥有负的 z-index 属性值。*/
+  }
+.header_content{
+  display: flex;/*弹性布局*/
+  /*flex 即 flexible box 能够扩展和收缩 flex 容器内的元素，以最大限度地填充可用空间*/
+  /*https://www.cnblogs.com/hellocd/p/10443237.html --- 贴个详解‘display：flex’的blog的链接*/
+  flex-direction: row;/*主轴为水平方向，起点在左端*/
+  justify-content: space-between;/*两端对齐，项目之间的间隔都相等*/
+  align-items: center;/*交叉轴的中点对齐*/
+  height: 100%;
+  width: 100%;
+  position: relative;
+    /*
+        absolute : 将对象从文档流中拖出，使用left，right，top，bottom等属性进行绝对定位。
+        而其层叠通过css z-index属性定义。此时对象不具有边距，但仍有补白和边框
+        relative : 对象不可层叠，但将依据left，right，top，bottom等属性在正常文档流中偏移位置
+    */
+  padding: 0 0 0 30px;
+}
+.header_logo{
+    display: inline-flex;
+  /*
+    display: flex;不会让容器本身取消它的块状的属性，但它的子元素会变成行内块的的属性
+    display: inline-flex;父级是变成行内块元素，他的子元素也是行内块元素，并且自动换行
+    父元素是块状属性，前后是要换行的，与他同级的元素就不能一行内显示了
+  */
+    flex-direction: row;
+    justify-content: flex-start;/*左对齐*/
+    align-items: center;
+    height: 69px;
+    width: 100px;
+}
+.header_logo img{
+    width: 100px;
+    height: auto;/*高度自动增长*/
+    display: block;
+}
+.header_nav{
+  height: 69px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 60px;
+}
+.header_nav a{
+  display: inline-block;
+  font-size: 16px;
+  color: #c0c0c0;
+  margin-right: 30px;
+  font-family: 'Inter', sans-serif;
+}
+.header_nav a:hover{
+  color: #25a56a;
+}
+.header_nav .a_end{
+  margin: 0;
+}
+.header_form{
+  display: inline-block;
+  width: 320px;
+  height: 69px;
+  padding: 0;
+  border: 0;
+  margin-right: 50px;
+}
+.header_search{
+  position: absolute;
+  width: 320px;
+  height: 69px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1;
+}
+.header_search input{
+  padding: 0 60px 0 20px;
+  width: 100%;
+  height: 40px;
+  background-color: #222227;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+}
+.btn{
+  font-family: icomoon;
+  font-size: 20px;
+  color: #c0c0c0;
+  transition: 0.5s ease;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  height: 40px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.btn:hover{
+  color: #25a56a;
+}
+#nav_and_form{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.header_actions{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: auto;
+  margin-left: auto;/*使元素靠右*/
+  margin-right: 40px;
+}
+.header_action{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 24px;
+  position: relative;
+  margin-left: 30px;
+}
+.header__action:first-child {/*first-child 选取属于其父元素的首个子元素*/
+  margin-left: 0;
+}
+.note_span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 16px;
+  min-width: 16px;/*设置最小宽度*/
+  color: #fff;
+  padding: 0 5px;
+  border-radius: 4px;
+  background-color: #2f80ed;
+  position: absolute;
+  top: 1px;
+  left: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  pointer-events: none;/*元素不对指针事件作出反应*/
+}
+.cart_span{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 16px;
+  min-width: 16px;/*设置最小宽度*/
+  color: #fff;
+  padding: 0 5px;
+  border-radius: 4px;
+  background-color: #25a56a;
+  position: absolute;
+  top: 1px;
+  left: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  pointer-events: none;/*元素不对指针事件作出反应*/  
+}
+
+.header__action-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 100%;
+}
+
+.header__action-btn svg {
+  width: 24px;
+  height: auto;
+  fill: #c0c0c0;
+  transition: fill 0.5s ease;
+}
+.header__action-btn:hover svg {
+  fill: #fff;
+}
+.header__action-btn span {
+  display: block;
+  white-space: nowrap;
+  color: #c0c0c0;
+  font-size: 16px;
+  margin-right: 10px;
+  font-family: 'Inter', sans-serif;
+  transition: color 0.5s ease;
+}
+.header__action--signin{
+  width: auto;
+  padding-left: 32px;
+}
+
+.header__action--signin{
+  margin-right: 30px;
+}
+.header__action--signin a:hover span{
+  color: #fff;
+}
+.header__action--signin a:hover svg{
+  fill: #25a56a;
+}
+/*==============================
+	Sidebar
+==============================*/
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #16151a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 101;
+  width: 280px;
+  transition: transform 0.5s ease;
+  border-right: 1px solid #222227;
+}
+.sidebar_logo{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  padding: 0 30px;
+  border-bottom: 1px solid #222227;
+  box-sizing: border-box;/*子元素整个盒子区域相当于父元素内容区域*/
+  /*在使用width：100%时要着重考虑设置box-sizing属性不然子元素很可能跑出父元素范围*/
+  /*话说我前面的header区是不是也没有考虑来着，算了看着没问题就行*/
+}
+.sidebar_nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  padding: 30px 0 0;
+  width: 100%;
+  max-height: calc(100vh - 150px);
+  /*vh，是指css中相对长度单位，表示相对视口高度（Viewport Height），1vh = 1% * 视口高度。1vh就是当前屏幕可见高度的1%*/
+  /*calc() 函数属于CSS3版本内容，用于动态计算长度值*/
+  /*max-height 属性设置元素的最大高度。*/
+  overflow-y: auto;/*如果溢出框，则应该提供滚动机制。*/
+  box-sizing: border-box;
+}
+.sidebar_nav-item{
+  width: 100%;
+  display: block;
+  margin-bottom: 15px;
+  position: relative;
+  box-sizing: border-box;
+}
+.sidebar_nav-item:last-child{
+  margin-bottom: 0;
+}
+.sidebar__nav-link{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 16px;
+  color: #c0c0c0;
+  font-family: 'Inter', sans-serif;
+  margin-left: 30px;
+  transition: 0.4s ease;
+  position: relative;
+}
+.sidebar__nav-link svg {
+  fill: #c0c0c0;
+  width: 22px;
+  height: auto;
+  transition: fill 0.5s;
+  margin-right: 12px;
+  margin-bottom: 2px;
+}
+.sidebar__nav-link svg:last-child {
+  width: 16px;
+  margin-right: 0;
+  margin-top: 3px;
+  margin-left: 2px;
+  margin-bottom: 0;
+}
+.sidebar__nav-link:hover {
+  color: #fff;
+}
+.sidebar__nav-link:hover svg {
+  fill: #25a56a;
+}
+.sidebar__nav-link--active,
+.sidebar__nav-link[aria-expanded="true"] {
+  /*aria-expanded="true" 表示展开状态*/
+  color: #fff;
+}
+.sidebar__nav-link--active svg,
+.sidebar__nav-link[aria-expanded="true"] svg {
+  fill: #25a56a;
+}
+.sidebar__nav-link--active:hover svg,
+.sidebar__nav-link[aria-expanded="true"]:hover svg {
+  fill: #25a56a;
+}
+.sidebar__nav-link[aria-expanded="true"] {
+  margin-bottom: 15px;
+}
+.sidebar__nav-link--active {
+  /*cursor: default;*/
+}
+/*==============================
+	Player
+==============================*/
+.player{
+  width: 218px;
+  padding: 20px 30px;
+  position: fixed;
+  z-index: 102;
+  bottom: 0;
+  left: 0;
+  background-color: #16151a;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-top: 1px solid #222227;
+  transition: transform 0.5s ease;
+}
+.player_cover{
+  width: 100%;
+  max-width: 90px;
+  box-sizing: border-box;
+}
+.player_cover img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+.player_content {
+  width: 100%;
+  box-sizing: border-box;
+}
+.player_track{
+  font-size: 16px;
+  line-height: 24px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 400;
+  color: #c0c0c0;
+  margin-bottom: 10px;
+  white-space: nowrap;/*段落中的文本不进行换行操作*/
+  overflow: hidden;
+  text-overflow: ellipsis;/*显示省略符号来代表被修剪的文本*/
+}
+.player_track b {
+  font-weight: 600;
+  color: #fff;
+}
+.plyr{
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 200px;
+  position: relative;
+}
+.plyr_controls{
+  padding: 0;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.plyr_controls button:hover svg{
+  fill: #25a56a;
+}
+.plyr_actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.plyr_actions button{
+  margin: 0 5px;
+}
+.plyr_control{
+  border: 0;
+  position: relative;
+  transition: all .3s ease;
+}
+.plyr_control svg {
+  width: 24px;
+  height: 24px;
+  transition: fill 0.4s ease;
+  display: block;
+  fill: #fff;
+  cursor: pointer;
+}
+.plyr_wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+#audio{
+  width: 100%;
+  height: 30px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+/*==============================
+	Main
+==============================*/
+.main{
+  padding: 0 15px 70px 295px ;
+  margin-top: 0;
+}
+.container_fluid{
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.content1{
+  max-width: 100%;
+  width: 1180px;
+  box-sizing: border-box;
+}
+.top{
+  position: relative;
+  padding: 0;
+  margin-top: 30px;
+  width: 100%;
+  height: 460px;
+  box-sizing: border-box;
+}
+.pic1{
+  margin-right: 15px;
+  width: 1180px;
+  height: 430px;
+}
+.pic_content{
+  padding: 60px;
+  padding-right: 33%;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: url(../img/pic2.jpg) center center / cover no-repeat;
+  border-radius: 12px;
+  position: relative;
+}
+.pic_content::before{
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+  45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  z-index: 1;/*图层上的其他东西的z-index比1大，不然会被盖住*/
+}/*让背景图片变暗*/
+.pic_content_title{
+  margin: 0;
+  font-size: 44px;
+  color: #fff;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+  line-height: 130%;/*字高的130%*/
+  z-index: 2;
+}
+.pic_content_text{
+  font-size: 17px;
+  line-height: 28px;
+  color: #c0c0c0;
+  margin-top: 15px;
+  margin-bottom: 0;
+  z-index: 2;
+}
+.pic_content_btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  z-index: 2;
+}
+.pic_btn{
+  background-color: #16151a;
+  margin-top: 30px;
+  margin-right: 30px;
+  padding: 0 25px;
+  min-width: 160px;
+  width: auto;
+  height: 50px;
+  border-radius: 12px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.5s ease;
+  box-sizing: border-box;
+  z-index: 2;
+}
+.pic_btn:hover{
+  color: #25a56a;
+}
+.pic_btn_green{
+  background-color: #25a56a;
+  color: #fff;
+}
+.pic_btn_green:hover{
+  background-color: #16151a;
+  color: #25a56a;
+}
+.pic_selections{
+  margin-top: -34px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 124px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 2;
+}
+.pic_selection{
+  background: none;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.5s ease;
+  z-index: 2;
+}
+.pic_selection span{
+  display: block;
+  background-color: #c0c0c0;
+  height: 4px;
+  width: 10px;
+  border-radius: 2px;
+}
+.pic_sel_active span{
+  width: 20px;
+  background-color: #fff;
+}
+.pic_change{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px; 
+  z-index: 2;
+}
+.pic_change_pre{
+  position: absolute;
+  bottom: 15px;
+  right: 95px;
+  
+}
+.pic_change_next{
+  position: absolute;
+  bottom: 15px;
+  right: 65px;
+}
+.pic_change svg{
+  fill: #fff;
+  width: 30px;
+  height: auto;
+  transition: fill 0.5s ease; 
+}
+.pic_change:hover svg{
+  fill: #25a56a;
+}
+.content2{
+  margin-left: -15px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 1210px;
+  box-sizing: border-box;
+}
+.content2_title{
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 30px;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.content2_title h2{
+  margin: 0;
+  font-size: 30px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 100%;
+  position: relative;
+}
+.content2_title_link{
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #c0c0c0;
+  font-weight: 400;
+}
+.content2_title_link svg{
+  width: 22px;
+  height: auto;
+  fill: #c0c0c0;
+  margin-left: 5px;
+  transition: fill 0.5s ease;
+}
+.content2_title_link:hover {
+  color: #fff;
+}
+.content2_title_link:hover svg{
+  fill: #25a56a;
+}
+.put_box{
+  padding-left: 15px;
+  padding-right: 15px;
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+  position: relative;
+  box-sizing: border-box;
+}
+.put_box_content{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+.pbc_cover{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #000;
+}
+.pbc_cover img{
+  height: 172px;
+  width: 172px;
+  display: block;
+  position: relative;
+  z-index: 1;
+  opacity: 1;/*透明度*/
+  transition: 0.5s ease;
+}
+.pbc_cover a{
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  top: 50%;
+  left: 50%;
+  margin: -28px 0 0 -28px;
+  border-radius: 12px;
+  background-color: #222227;
+  transform: scale(0.8);/**/
+  opacity: 0;
+  transition: 0.5s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.cover_stat{
+  font-size: 13px;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  color: #fff;
+  font-size: 13px;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.cover_stat span{
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.cover_stat span:last-child{
+  margin-right: 0;
+}
+.cover_stat svg{
+  width: 16px;
+  height: auto;
+  fill: #fff;
+  margin-right: 5px;
+}
+.pbc_cover a:hover svg{
+  fill: #25a56a;
+}
+.pbc_cover:hover img{
+  opacity: 0.6;
+  transform: scale(1.08);
+}
+.pbc_cover:hover a{
+  opacity: 1;
+  transform: scale(1);
+}
+.pbc_cover:hover .cover_stat{
+  opacity: 1;
+  transform: scale(1);
+}
+.pbc_cover a svg{
+  fill: #fff;
+  width: 24px;
+  height: auto;
+  margin: 1px 0 0 1px;
+  transition: fill 0.5s ease;
+}
+.pbc_title{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+.pbc_title h3{
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.pbc_title h3 a{
+  color: #fff;
+}
+.pbc_title h3 a:hover{
+  color: #25a56a;
+}
+.pbc_title span{
+  margin: 0;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  color: #c0c0c0;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.pbc_title span a{
+  color: #c0c0c0;
+}
+.pbc_title span a:hover{
+  color: #25a56a;
+}
+.footer{
+  padding-left: 295px;
+  padding-right: 15px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  background-color: #222227;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.footer_contain{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer_text{
+  color: #c0c0c0;
+  font-size: 15px;
+  font-weight: 500;
+}
+.footer_link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer_link a{
+  color: #c0c0c0;
+  font-size: 15px;
+  font-weight: 500;
+}
+.footer_link a:hover{
+  color: #25a56a;
+}
+.footer_link svg{
+  width: 20px;
+  height: 20px;
+  fill: #25a56a;
+  margin-right: 5px;
+}
+/*==============================
+	search_music
+==============================*/
+.s_row--grid{
+  margin-left: -15px;
+  margin-right: -15px;
+  display: flex;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.Now_Position{
+  padding-left: 15px;
+  padding-right: 15px;
+  flex: 0 0 100%;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+.Position{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  list-style: none;
+}
+.Position_item{
+  font-size: 14px;
+  color: #c0c0c0;
+  transition: 0.5s ease;
+  position: relative;
+  margin-right: 34px;
+}
+.Position_item::before{
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 1px;
+  bottom: 0;
+  width: 34px;
+  background: url(../img/breadcrumb.svg) no-repeat center/16px auto;
+}
+.Position_item a{
+  color: #c0c0c0;
+  transition: 0.5s ease;
+}
+.Position_item a:hover{
+  color: #25a56a;
+}
+.Position_item:last-child{
+  margin-right: 0;
+  cursor: default;
+}
+.Position_item:last-child::before{
+  display: none;
+}
+.Title{
+  padding-left: 15px;
+  padding-right: 15px;
+  flex: 0 0 100%;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+.main_title{
+  margin-top: 70px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.main_title h1{
+  margin-top: 0;
+  font-size: 36px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #fff;
+  line-height: 140%;
+  margin-bottom: 0;
+  position: relative;
+}
+.s_music{
+  padding-left: 15px;
+  padding-right: 15px;
+  flex: 0 0 100%;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+.s_music_content{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  border: 1px solid #222227;
+  background-color: #16151a;
+  padding: 20px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+.song_content{
+  box-sizing: border-box;
+  margin-right: 20px;
+  width: 290px;
+}
+.s_song_img{
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  height: 290px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.s_song_img img{
+  width: 100%;
+  box-sizing: border-box;
+}
+.s_song_stat{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #c0c0c0;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+.s_song_stat span{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 20px;
+}
+.s_song_stat span:last-child{
+  margin-right: 0;
+}
+.s_song_stat svg{
+  width: 20px;
+  height: auto;
+  fill: #25a56a;
+  margin-right: 5px;
+}
+.s_song_about{
+  width: 100%;
+  box-sizing: border-box;
+  height: 50px;
+  border-radius: 12px;
+  background-color: #25a56a;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  padding: 0 25px;
+  margin-top: 15px;
+  transition: 0.5s ease;
+}
+.s_song_about:hover{
+  background-color: #222227;
+}
+.s_music_list{
+  overflow-y:auto;
+  outline:none;
+  width: calc(100% - 310px);
+  height: 388px;
+  margin: 0;
+  padding-right: 14px;
+  box-sizing: border-box;
+}
+.s_music_list::-webkit-scrollbar{
+  width: 4px;
+  border-radius: 4px;
+  background: #222227
+}
+.s_music_list::-webkit-scrollbar-thumb{
+  background: #25a56a;
+  width: 4px;
+  border-radius: 4px;
+}
+.scroll_content{
+  width: 100%;
+  box-sizing: border-box;
+}
+.songs_list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.songs_list_item{
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #222227;
+  height: 58px;
+}
+.songs_list_item_cover{
+  width: 72px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+.songs_list_item_cover img{
+  border-radius: 8px;
+  width: 48px;
+  height: auto;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  position: relative;
+}
+.songs_list_item_cover svg{
+  position: relative;
+  left: -36px;
+  opacity: 0;
+  fill: #fff;
+  width: 24px;
+  height: auto;
+  margin: 1px 0 0 0px;
+  transition: 0.5s ease;
+}
+.songs_list_item:hover img{
+  opacity: 0.4;
+}
+.songs_list_item:hover svg{
+  opacity: 1;
+}
+.songs_list_item_cover svg:hover{
+  fill: #25a56a;
+}
+.songs_list_item_title{
+  max-width: 200px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 15px;
+  margin-right: auto;
+}
+.songs_list_item_title h4{
+  margin: 0;
+  display: block;
+  width: 100%;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.songs_list_item_title h4 a{
+  color: white;
+  transition: 0.5s ease;
+}
+.songs_list_item_title h4 a:hover{
+  color: #25a56a;
+}
+.songs_list_item_title span{
+  width: 100%;
+  color: #c0c0c0;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.songs_list_item_title span a{
+  color: #c0c0c0;
+}
+.songs_list_item_title span a:hover{
+  color: #25a56a;
+}
+.songs_list_item_add{
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: rgba(37,165,106,0.15);
+  transition: 0.5s ease;
+}
+.songs_list_item_add svg{
+  width: 18px;
+  height: auto;
+  fill: #25a56a;
+}
+.songs_list_item_add:hover{
+  background-color: rgba(37,165,106,0.3);
+}
+.songs_list_item_export{
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: rgba(128,81,212,0.15);
+  transition: 0.5s ease;
+}
+.songs_list_item_export:hover{
+  background-color: rgba(128,81,212,0.3);
+}
+.songs_list_item_export svg{
+  width: 18px;
+  height: auto;
+  fill: #8051d4;
+}
+.songs_list_item_time{
+  font-size: 14px;
+  color: #c0c0c0;
+  margin-left: 15px;
+}
+.Comment-wrap{
+  padding-left: 15px;
+  padding-right: 15px;
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+.Comment{
+  display: none;
+  margin-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 60px;
+  border-top: 1px solid #222227;
+}
+.comment_title{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.comment_title h4{
+  color: #fff;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  margin: 0;
+  position: relative;
+}
+.comment_title span{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 4px;
+  background-color: #25a56a;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.comments_list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.comments_item{
+  margin-bottom: 20px;
+  display: block;
+  background-color: #16151a;
+  border: 1px solid #222227;
+  padding: 20px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+.comments_autor{
+  position: relative;
+  padding-left: 55px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.comments_avatar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+.comments_name{
+  display: block;
+  font-size: 16px;
+  color: #fff;
+  line-height: 20px;
+  font-weight: 400;
+}
+.comments_time{
+  display: block;
+  font-size: 12px;
+  color: #c0c0c0;
+  line-height: 20px;
+  font-weight: 400;
+}
+.comments_text{
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  color: #c0c0c0;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 20px 0;
+  position: relative;
+  border-top: 1px solid #222227;
+  border-bottom: 1px solid #222227;
+  font-weight: 300;
+}
+.comments_actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 0 0;
+  position: relative;
+  box-sizing: border-box;
+}
+.comments_rate{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 20px;
+}
+.comments_actions button{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 20px;
+  height: 20px;
+  transition: 0.5s ease;
+}
+.comments_actions button:last-child{
+  margin-right: 0;
+}
+.comments_actions button svg{
+  width: 16px;
+  height: auto;
+  fill: #c0c0c0;
+  transition: fill 0.5s ease;
+}
+.comments_actions button:hover svg{
+  fill: #25a56a;
+}
+.comments_actions button span{
+  margin-left: 6px;
+  font-size: 12px;
+  color: #c0c0c0;
+  transition: color 0.5s ease;
+}
+.comments_actions button:hover span{
+  color: white;
+}
+#btn_like{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 20px;
+}
+#btn_like span{
+  color: #c0c0c0;
+  font-size: 14px;
+}
+#like{
+  position: relative;
+  top: -2px;
+  fill: #25a56a;
+  width: 16px;
+  height: 16px;
+  height: auto;
+  opacity: 0.6;
+  transition: 0.5s ease;
+  margin-top: 1px;
+}
+#btn_like:hover{
+  color: white;
+}
+#btn_like:hover svg{
+  opacity: 1;
+}

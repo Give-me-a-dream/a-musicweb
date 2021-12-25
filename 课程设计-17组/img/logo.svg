@@ -1,0 +1,32 @@
+<svg width="101" height="28.999999999999996" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="103" height="31" id="canvas_background" fill="none"/>
+ </g>
+ <defs>
+  <filter id="svg_15_blur">
+   <feGaussianBlur stdDeviation="0" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <rect y="19" width="4" height="4" rx="1" fill="#25A56A" id="svg_1"/>
+  <rect x="5" y="19" width="4" height="4" rx="1" fill="#25A56A" id="svg_2"/>
+  <rect x="10" y="19" width="4" height="4" rx="1" fill="#25A56A" id="svg_3"/>
+  <rect x="15.094607" y="19" width="4" height="4" rx="1" fill="#25A56A" id="svg_4"/>
+  <rect y="14" width="4" height="4" rx="1" fill="#25A56A" fill-opacity="0.25" id="svg_5"/>
+  <rect x="5" y="14" width="4" height="4" rx="1" fill="#25A56A" id="svg_6"/>
+  <rect x="10" y="14" width="4" height="4" rx="1" fill="#25A56A" id="svg_7"/>
+  <rect x="15" y="14" width="4" height="4" rx="1" fill="#25A56A" id="svg_8"/>
+  <rect y="9" width="4" height="4" rx="1" fill="#25A56A" fill-opacity="0.25" id="svg_9"/>
+  <rect x="5" y="9" width="4" height="4" rx="1" fill="#25A56A" fill-opacity="0.25" id="svg_10"/>
+  <rect x="10" y="9" width="4" height="4" rx="1" fill="#25A56A" id="svg_11"/>
+  <rect x="15" y="9" width="4" height="4" rx="1" fill="#25A56A" fill-opacity="0.25" id="svg_12"/>
+  <text fill="#000000" stroke="null" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="30.05" y="15.785" id="svg_14" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve"/>
+  <text filter="url(#svg_15_blur)" fill="#ffffff" stroke-width="0" stroke-opacity="null" x="38.229112" y="11.285" id="svg_15" font-size="23" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve" transform="matrix(1.037208854814584,0,0,1.0837054042812155,-15.74051839372693,10.628303259192517) " stroke="null">melody</text>
+  <path stroke="null" id="svg_13" d="m17.217989,23.159428c-0.084097,-0.015208 -0.113097,-0.121452 -0.062958,-0.185104c0.06654,-0.098442 0.208876,-0.164804 0.320398,-0.102689c0.002223,-0.346653 0.00094,-0.693324 0.00128,-1.039986c0.278073,-0.056099 0.556748,-0.109313 0.834926,-0.164924c-0.000602,0.388521 -0.001205,0.777042 -0.001807,1.165563c-0.043579,0.117512 -0.184395,0.199 -0.30701,0.162561c-0.072999,-0.021851 -0.090499,-0.116077 -0.049851,-0.17381c0.055664,-0.08612 0.15927,-0.145248 0.263427,-0.129117c0.029723,-0.003007 0.073493,0.045115 0.06093,-0.009323c0,-0.272332 0,-0.544664 0,-0.816996c-0.255259,0.051385 -0.511024,0.10033 -0.766401,0.151159c-0.000872,0.316912 0.00217,0.633872 -0.002275,0.950745c-0.008126,0.096249 -0.100514,0.161916 -0.186757,0.187572c-0.03407,0.005745 -0.069545,0.00931 -0.103902,0.004349l0,0zm0.66587,-1.292045c0.131153,-0.02581 0.262368,-0.05131 0.393465,-0.077407c0.016684,-0.066465 -0.057981,-0.023301 -0.094496,-0.021678c-0.223937,0.044206 -0.448003,0.087757 -0.671905,0.132134c-0.016684,0.066465 0.057981,0.023301 0.094496,0.021678c0.092804,-0.01829 0.18562,-0.036518 0.27844,-0.054728l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="#25A56A"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_16" y2="22.905866" x2="43.451751" y1="8.430936" x1="43.073322" fill-opacity="null" stroke-opacity="null" stroke-width="null" stroke="null" fill="none"/>
+  <path d="m28.787607,7.484862c0,0 0.094606,0 0.189215,0c0.189215,0 0.380556,-0.034678 0.662251,0c0.387154,0.047661 0.662252,0.094607 1.229897,0.189215c0.567644,0.094607 1.112309,0.377192 1.702934,0.473037c0.747086,0.121235 1.324501,0.189214 1.892147,0.378429c0.567642,0.189215 1.138191,0.370134 1.419109,0.473038c0.47839,0.175239 0.842743,0.330769 1.229897,0.378429c0.281696,0.034678 0.461548,0.141293 0.756859,0.189215c0.186775,0.03031 0.378429,0.094607 0.473038,0.094607l0.094608,0l0.094604,0l0.094608,0" id="svg_18" fill-opacity="null" stroke-opacity="null" stroke-width="null" stroke="null" fill="none"/>
+  <path d="m29.922895,4.741248c0.283823,0 0.567644,-0.094607 0.756859,-0.094607l0.189215,0l0.094608,0" id="svg_19" fill-opacity="null" stroke-opacity="null" stroke-width="null" stroke="null" fill="none"/>
+ </g>
+</svg>
