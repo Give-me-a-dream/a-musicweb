@@ -1,4 +1,4 @@
-axios.defaults.baseURL = 'http://lycloudmusicphp.natapp1.cc/';
+axios.defaults.baseURL = 'https://autumnfish.cn';
 var srh_songs = [];
 var Hot_comments = [];
 var Comments_Like_counts = [];
